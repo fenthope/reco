@@ -101,7 +101,7 @@ type Config struct {
 	Output          io.Writer  // 日志输出目标 如果为 nil 且 FilePath 非空 则输出到文件
 	FilePath        string     // 日志文件路径 (如果 Output 为 nil)
 	EnableRotation  bool       // 是否启用日志轮转 (仅当 FilePath 有效时)
-	MaxFileSizeMB   int64      // 单个日志文件最大大小 (MB) 默认 100MB
+	MaxFileSizeMB   int64      // 单个日志文件最大大小 (MB) 默认 10MB
 	MaxBackups      int        // 保留的旧日志文件数量 (不包括当前写入的文件) 默认 7
 	CompressBackups bool       // 是否压缩备份的日志文件 默认 true
 	Async           bool       // 是否启用异步写入 默认 true
@@ -129,8 +129,8 @@ type Logger struct {
 
 const (
 	defaultTimeFormat      = time.RFC3339Nano // 默认时间格式使用纳秒精度
-	defaultMaxFileSizeMB   = 100
-	defaultMaxBackups      = 7
+	defaultMaxFileSizeMB   = 10
+	defaultMaxBackups      = 5
 	defaultCompressBackups = true
 	defaultAsync           = true
 	defaultBufferSize      = 8192
