@@ -55,6 +55,8 @@ func ParseLevel(levelStr string) Level {
 	switch strings.ToUpper(levelStr) {
 	case "DEBUG":
 		return LevelDebug
+	case "DUMP":
+		return LevelDebug
 	case "INFO":
 		return LevelInfo
 	case "WARN":
