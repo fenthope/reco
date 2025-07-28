@@ -3,9 +3,9 @@ package reco // 包名保持与您提供的一致
 import (
 	"archive/tar"
 	"compress/gzip"
-	"encoding/json"
 	"fmt"
 	"io"
+	"maps"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -14,6 +14,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/go-json-experiment/json"
 )
 
 // Level 定义日志级别
@@ -321,9 +323,7 @@ func (l *Logger) submitEntry(level Level, message string, fields Fields) {
 		}
 	}
 	if fields != nil {
-		for k, v := range fields {
-			entry.Fields[k] = v
-		}
+		maps.Copy(entry.Fields, fields)
 	}
 
 	if l.config.EnableCaller { // 如果配置了记录调用者信息
@@ -520,9 +520,7 @@ func mergeFields(fieldArgs ...Fields) Fields {
 	result := make(Fields)
 	for _, f := range fieldArgs {
 		if f != nil {
-			for k, v := range f {
-				result[k] = v
-			}
+			maps.Copy(result, f)
 		}
 	}
 	if len(result) == 0 {
