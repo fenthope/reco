@@ -2,7 +2,7 @@
 
 ## 许可证
 
-基于 WJQSERVER-STUDIO/logger 构建, 并在 Go 1.25 下进行了结构优化和改进。
+基于 WJQSERVER-STUDIO/logger 构建, 继承许可证
 
 [![GoDoc](https://godoc.org/github.com/fenthope/reco?status.svg)](https://godoc.org/github.com/fenthope/reco) ![Go Version](https://img.shields.io/badge/go-1.25-blue.svg) ![License](https://img.shields.io/badge/license-MPL-blue.svg)
 
