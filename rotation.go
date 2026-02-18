@@ -21,7 +21,9 @@ func (l *Logger) rotateFile() error {
 	}
 
 	currentFilePath := l.config.FilePath
-	_ = l.file.Close()
+if err := l.file.Close(); err != nil {
+		fmt.Fprintf(os.Stderr, "Logger: error closing current log file for rotation: %v\n", err)
+	}
 
 	ext := filepath.Ext(currentFilePath)
 	base := strings.TrimSuffix(currentFilePath, ext)
