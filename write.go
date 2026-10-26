@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-json-experiment/json"
+	"encoding/json/v2"
 )
 
 func (l *Logger) getCallerInfo() string {
